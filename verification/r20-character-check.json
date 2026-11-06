@@ -1,0 +1,48 @@
+{
+  "status": "passed",
+  "checks": [
+    "Continuous garment grows rounder in front and rear, without a separate waist mesh",
+    "Growth does not modify other players meshes",
+    "Maximum-size walk start, planted feet and stopping stay grounded",
+    "Walking transitions avoid snapping hands",
+    "Eating reaches the mouth at largest body size",
+    "Flight folds legs behind the torso and recovers with grounded feet"
+  ],
+  "measurements": [
+    {
+      "power": 0,
+      "g": 0,
+      "width": 0.9599999785423279,
+      "depth": 0.5799999833106995
+    },
+    {
+      "power": 10,
+      "g": 0.10034324844963154,
+      "width": 1.0196715593338013,
+      "depth": 0.6625387966632843
+    },
+    {
+      "power": 120,
+      "g": 0.37131422544860865,
+      "width": 1.182198405265808,
+      "depth": 0.8873492181301117
+    },
+    {
+      "power": 1000,
+      "g": 0.6681068778023947,
+      "width": 1.3601371049880981,
+      "depth": 1.1334776878356934
+    },
+    {
+      "power": 10000,
+      "g": 0.9999997240213372,
+      "width": 1.5591731071472168,
+      "depth": 1.4087882041931152
+    },
+    {
+      "minSole": 0.03500000059604601,
+      "maxSole": 0.07746997274515777,
+      "maxHandStep": 0.04351218211736998
+    }
+  ]
+}

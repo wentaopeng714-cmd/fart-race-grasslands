@@ -30,4 +30,4 @@ export function flightCameraPose(elapsed,height,z,yaw,pitch,punch,reducedMotion,
 }
 
 // Rear trousers surface, evaluated after the pelvis hinge has moved the model.
-export function exhaustOrigin(actor,out){actor.body.localToWorld(out.set(0,1.48,-.25));out.z-=.28;return out;}
+export function exhaustOrigin(actor,out){actor.body.localToWorld(out.set(0,1.48,-.25-(actor.growth||0)*.43));out.z-=.28;return out;}

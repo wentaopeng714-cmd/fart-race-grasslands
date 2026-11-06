@@ -1,13 +1,13 @@
 {
-  "name": "fart-race-grasslands",
-  "version": "1.5.1",
+  "name": "fart-flight-simple",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
-    "check": "node --check server.mjs && node --check dist/game.js && node --check dist/art.js && node --check dist/character.js && node --check dist/character-review.js && node --check dist/ui.js && node --check dist/acting.js && node --check dist/motion.js && node --check dist/district.js && node --check dist/race-rules.js && node --check dist/jet-effects.js && node --check dist/flight-course.js",
-    "test:network": "node verify-r15.mjs",
-    "test:feel": "node verify-feel.mjs"
+    "check": "node --check server.mjs && node --check dist/game.js && node --check dist/art.js && node --check dist/character.js",
+    "test:network": "node verify-network.mjs",
+    "test:character": "node verify-character.mjs"
   },
   "dependencies": {
     "three": "0.187.0",

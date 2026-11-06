@@ -1,4 +1,5 @@
-export const COUNTDOWN_MS=3000;
+export const COUNTDOWN_MS=0;
+export function inLaunchZone(pose){return !!pose&&Math.abs(pose.x)<=6.6&&pose.z>=14.2&&pose.z<=20.5;}
 export const FLIGHT_MS=4800;
 export const LANDING_SECONDS=3.98;
 export const BOOST_ACTIVE_MS=3600;

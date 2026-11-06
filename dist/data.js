@@ -1,5 +1,5 @@
 export const FOODS = [
- {id:'poop',name:'热乎小面包',base:1,need:0,kind:'roll'},
+ {id:'poop',name:'小面包',base:10,need:0,kind:'roll'},
  {id:'fish',name:'街角热狗',base:2,need:20,kind:'hotdog'},
  {id:'walnut',name:'甜玉米棒',base:3,need:160,kind:'corn'},
  {id:'pepper',name:'彩椒烤串',base:4,need:1280,kind:'skewer'},
