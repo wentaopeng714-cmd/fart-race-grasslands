@@ -6,7 +6,7 @@ export class JetEffects{
  constructor(scene){
   this.scene=scene;this.jets=new Map();this.cursor=0;this.live=0;this.transform=new T.Object3D();this.color=new T.Color();
   this.particles=Array.from({length:CAPACITY},()=>({position:new T.Vector3(),velocity:new T.Vector3(),born:-100,life:1,radius:1,growth:1,opacity:.74,vertical:.65,spin:0}));
-  const geometry=new T.SphereGeometry(1,14,10);const vertices=geometry.attributes.position;for(let i=0;i<vertices.count;i++){const x=vertices.getX(i),y=vertices.getY(i),z=vertices.getZ(i),lobe=1+.14*Math.sin(4*x+2*z)*Math.cos(3*y)+.07*Math.sin(5*z-2*y);vertices.setXYZ(i,x*lobe,y*lobe,z*lobe);}geometry.computeVertexNormals();this.alpha=new T.InstancedBufferAttribute(new Float32Array(CAPACITY),1);geometry.setAttribute('gasAlpha',this.alpha);
+  const geometry=new T.SphereGeometry(1,18,14);const vertices=geometry.attributes.position;for(let i=0;i<vertices.count;i++){const x=vertices.getX(i),y=vertices.getY(i),z=vertices.getZ(i),lobe=1+.09*Math.sin(4*x+2*z)*Math.cos(3*y)+.05*Math.sin(5*z-2*y);vertices.setXYZ(i,x*lobe,y*lobe,z*lobe);}geometry.computeVertexNormals();this.alpha=new T.InstancedBufferAttribute(new Float32Array(CAPACITY),1);geometry.setAttribute('gasAlpha',this.alpha);
   const material=new T.MeshStandardMaterial({color:0xffffff,roughness:1,metalness:0,transparent:true,opacity:1,depthWrite:false});
   material.onBeforeCompile=shader=>{shader.vertexShader=shader.vertexShader.replace('#include <common>','#include <common>\nattribute float gasAlpha; varying float vGasAlpha;').replace('#include <begin_vertex>','#include <begin_vertex>\nvGasAlpha = gasAlpha;');shader.fragmentShader=shader.fragmentShader.replace('#include <common>','#include <common>\nvarying float vGasAlpha;').replace('#include <opaque_fragment>','float gasFace = abs(dot(normalize(normal), normalize(vViewPosition))); diffuseColor.a *= vGasAlpha * smoothstep(0.08, 0.5, gasFace);\n#include <opaque_fragment>');};material.customProgramCacheKey=()=> 'soft-pelvis-gas-r18';
   this.clouds=new T.InstancedMesh(geometry,material,CAPACITY);this.clouds.instanceMatrix.setUsage(T.DynamicDrawUsage);this.clouds.frustumCulled=false;this.clouds.castShadow=false;scene.add(this.clouds);
@@ -20,9 +20,9 @@ export class JetEffects{
   const index=this.cursor++%CAPACITY,p=this.particles[index];p.born=t;p.life=life;p.position.copy(position);p.position.x+=x;p.position.y+=y;p.position.z+=z;p.velocity.set(vx,vy,vz);p.radius=radius;p.growth=growth;p.opacity=opacity;p.vertical=vertical;p.spin=index*2.39996;this.clouds.setColorAt(index,this.color.set(tint));
  }
  blast(position,t,speed,scale=1){
-  const inherit=Math.min(220,Math.max(0,speed))*.80;
+  const inherit=Math.min(220,Math.max(0,speed))*.12;
   // A cauliflower-shaped central cloud plus smaller rolling lobes, all born in one short impulse.
-  for(let i=0;i<26;i++){const angle=i*2.39996,spread=i<8?.32:.78,rnd=((i*31)%23)/23,side=Math.cos(angle),up=Math.sin(angle);this.particle(position,t,{radius:(i<8?.50:.29+rnd*.21)*scale,life:.46+rnd*.34,x:side*spread*scale,y:-.38+up*spread*.32*scale,z:-.15-rnd*.7,vx:side*(1.4+rnd*2.5)*scale,vy:up*(.35+rnd*.60)+.15,vz:inherit-(6+rnd*7),growth:i<8?1.6:1.7,tint:[0xe9edce,0xc5d59c,0xd8e2b3,0xf0efd7][i%4]});}
+  for(let i=0;i<34;i++){const angle=i*2.39996,spread=i<10?.26:.70,rnd=((i*31)%23)/23,side=Math.cos(angle),up=Math.sin(angle);this.particle(position,t,{radius:(i<10?.65:.36+rnd*.23)*scale,life:.60+rnd*.30,x:side*spread*scale,y:up*spread*.55*scale,z:-.2-rnd*.8,vx:side*(2+rnd*3.5)*scale,vy:up*(.8+rnd*.65)-1.1,vz:inherit-(10+rnd*8),growth:i<10?1.65:1.9,vertical:.9,opacity:.83,tint:[0xe5ebc8,0xccddb0,0xdce8c4,0xf1f0d8][i%4]});}
   const ring=this.rings[this.ringCursor++%this.rings.length];ring.born=t;ring.mesh.position.copy(position);ring.mesh.position.z-=.4;ring.mesh.rotation.set(0,0,0);
  }
  begin(t,dt){
@@ -36,13 +36,13 @@ export class JetEffects{
  }
  update(id,position,t,active,main=false,speed=0){
   const jet=this.get(id);if(!active){jet.wasActive=false;jet.pending=0;jet.continuationDone=true;jet.lastTime=-100;jet.emitCarry=0;return;}
-  if(jet.pending){this.blast(position,t,speed,main?1:.65);jet.pending=0;jet.continuationAt=t+.055;jet.continuationDone=false;jet.lastTrail=t;}
-  if(!jet.continuationDone&&t>=jet.continuationAt){this.blast(position,t,speed,(main?.72:.5));jet.continuationDone=true;}
+  if(jet.pending){this.blast(position,t,speed,main?1.15:.70);jet.pending=0;jet.continuationAt=t+.045;jet.continuationDone=false;jet.lastTrail=t;}
+  if(!jet.continuationDone&&t>=jet.continuationAt){this.blast(position,t,speed,(main?.76:.5));jet.continuationDone=true;}
   // Keep gaps between soft lobes: use relative exhaust speed, not the render frame rate.
-  const elapsed=jet.wasActive?t-jet.lastTime:1/60,dt=clamp(elapsed,1/240,.05),inherited=Math.min(220,Math.max(0,speed))*.75-12,rate=clamp((Math.max(0,speed)-inherited)/.95,16,60);
+  const elapsed=jet.wasActive?t-jet.lastTime:1/60,dt=clamp(elapsed,1/240,.05),inherited=Math.min(220,Math.max(0,speed))*.25-9,rate=clamp((Math.max(0,speed)-inherited)/2,14,42);
   jet.emitCarry+=dt*rate;const count=Math.min(4,Math.floor(jet.emitCarry));jet.emitCarry-=count;
   if(!jet.wasActive||elapsed>.10)jet.lastPosition.copy(position);
-  for(let i=0;i<count;i++){const u=(i+1)/count,phase=t*35+i*2.3,side=Math.sin(phase)*.13,rnd=(Math.sin(t*71+i*5.7)+1)/2,origin=this.transform.position.copy(jet.lastPosition).lerp(position,u);this.particle(origin,t,{radius:(main?.24:.16)+Math.min(150,speed)*.0012+rnd*.10,life:.42+rnd*.10,x:side,y:-.09,z:-.10,vx:side*2.5,vy:.15+Math.cos(phase)*.2,vz:inherited,growth:1.25,opacity:.55+rnd*.10,vertical:.85+rnd*.20,tint:rnd>.45?0xbcd497:0xc1ead9});}
+  for(let i=0;i<count;i++){const u=(i+1)/count,phase=t*35+i*2.3,side=Math.sin(phase)*.15,rnd=(Math.sin(t*71+i*5.7)+1)/2,origin=this.transform.position.copy(jet.lastPosition).lerp(position,u);this.particle(origin,t,{radius:(main?.29:.18)+rnd*.12,life:.28+rnd*.10,x:side,y:0,z:-.10,vx:side*4,vy:-1.4+Math.cos(phase)*.3,vz:inherited,growth:1.65,opacity:.54+rnd*.10,vertical:.9+rnd*.20,tint:rnd>.45?0xd0dfb1:0xe4e8c6});}
   jet.lastPosition.copy(position);jet.lastTime=t;
 
   jet.wasActive=true;

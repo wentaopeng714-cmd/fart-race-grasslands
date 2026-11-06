@@ -1,13 +1,14 @@
 {
   "name": "fart-flight-simple",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
     "check": "node --check server.mjs && node --check dist/game.js && node --check dist/art.js && node --check dist/character.js",
     "test:network": "node verify-network.mjs",
-    "test:character": "node verify-character.mjs"
+    "test:character": "node verify-character.mjs",
+    "test:launch": "node verify-launch.mjs"
   },
   "dependencies": {
     "three": "0.187.0",

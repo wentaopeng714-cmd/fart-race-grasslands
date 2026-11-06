@@ -67,7 +67,7 @@ function action(c,m){const p=c.p;
 }
 const MIME={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css','.png':'image/png','.jpg':'image/jpeg','.svg':'image/svg+xml','.json':'application/json'};
 const server=http.createServer((req,res)=>{let uri;try{uri=decodeURIComponent(new URL(req.url,'http://localhost').pathname);}catch{res.writeHead(400);res.end();return;}res.setHeader('Cache-Control','no-cache');
- if(uri==='/health'){res.setHeader('Content-Type','application/json');res.end(JSON.stringify({ok:true,version:'2.0.0',players:peers.size,rooms:rooms.size}));return;}
+ if(uri==='/health'){res.setHeader('Content-Type','application/json');res.end(JSON.stringify({ok:true,version:'2.1.0',players:peers.size,rooms:rooms.size}));return;}
  if(uri==='/connection-info'){const addresses=Object.values(os.networkInterfaces()).flat().filter(a=>a&&!a.internal&&a.family==='IPv4').map(a=>`http://${a.address}:${PORT}`);res.setHeader('Content-Type','application/json');res.end(JSON.stringify({lanOrigins:addresses,publicOrigin:process.env.PUBLIC_ORIGIN||null}));return;}
  const f=path.resolve(ROOT,'dist','.'+(uri==='/'?'/index.html':uri));if(!f.startsWith(path.join(ROOT,'dist')+path.sep)){res.writeHead(403);res.end();return;}fs.readFile(f,(err,data)=>{if(err){res.writeHead(404);res.end('Not found');return;}res.setHeader('Content-Type',MIME[path.extname(f)]||'application/octet-stream');res.end(data);});
 });

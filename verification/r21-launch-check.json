@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "checks": [
+    "Torso leans more than 68 degrees within 0.35 seconds",
+    "Initial impulse exceeds coast speed by 3x",
+    "Distance is continuous and stops exactly at landing",
+    "Exhaust follows the grown rear garment",
+    "One burst makes a wide expanding cloud that fully dissipates"
+  ],
+  "measurements": {
+    "leanAt35": 1.3535055775471116,
+    "burstPuffs": 70,
+    "cloudWidth": 6.350843505913118
+  }
+}

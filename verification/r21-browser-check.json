@@ -1,0 +1,29 @@
+{
+  "revision": "simple-r21",
+  "checks": [
+    "Desktop start, direct launch, result and retry",
+    "Maximum growth side silhouette and articulated walking inspected",
+    "Flight screenshot shows forward lean and folded legs",
+    "Large launch cloud visually inspected",
+    "Landing crouch inspected in character review",
+    "390x844 iframe layout: all controls within screen",
+    "Pointer hold increased energy from 0 to 70",
+    "Joystick moved player from (0,4) to (2.11,1.17)",
+    "Mobile-sized round finished at 70m and returned to lobby"
+  ],
+  "browserErrors": [],
+  "phoneErrors": [
+    {
+      "level": "error",
+      "message": "Uncaught TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.",
+      "timestamp": "2026-11-06T10:58:40.661Z"
+    }
+  ],
+  "physicalPhoneTested": false,
+  "mobileViewport": {
+    "width": 390,
+    "height": 844,
+    "method": "embedded mobile layout, pointer interaction"
+  },
+  "limitation": "Short landing-stage screenshot was not captured in live play; landing pose was inspected in the review and foot contact checked numerically."
+}
