@@ -1,0 +1,21 @@
+{
+  "revision": "r18",
+  "status": "passed",
+  "checks": [
+    "original-profile high-power flight and solo reward flow",
+    "pelvis-hinged forward dive and tucked legs visible in actual gameplay camera",
+    "butt-anchored detached gas clouds visible at high and low speed",
+    "deep landing compression with grounded feet and recovery",
+    "390x844 portrait touch layout and desktop Space boost"
+  ],
+  "effectRevision": "pelvis-flight-r18",
+  "consoleErrors": [],
+  "physicalPhoneTested": false,
+  "screenshots": [
+    "r18-flight-playable.png",
+    "r18-impact-playable.png",
+    "r18-flight-mobile.png",
+    "r18-impact-mobile.png",
+    "r18-character-flight.png"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "time": "2026-11-06T04:12:42.184Z",
+  "checks": [
+    "Separate persistent identities",
+    "Empty energy cannot enter a race",
+    "Same-room players have independent start times and 4.8 second flights",
+    "Every track contains only its own player; no human or NPC opponent",
+    "Other room has isolated peers and rounds",
+    "Independent appearances remain visible in shared lobby",
+    "Perfect timing earns exactly 8%",
+    "Personal boost never changes another player run",
+    "Replay and cooldown inputs rejected",
+    "Three perfect boosts cap bonus at 24%",
+    "Fourth boost denied",
+    "Restart preserves each independent challenge, including offline player",
+    "Results award personal distance without opponent ranking",
+    "Exactly one payout for connected and offline players",
+    "Reconnect cannot duplicate race award",
+    "Double return cannot duplicate award",
+    "Daily award remains one time",
+    "Equipment purchase deducts correct price",
+    "Locked food cannot be equipped",
+    "Retry outside a result cannot create a duplicate run",
+    "Stopping auto challenge cancels only that player countdown"
+  ],
+  "status": "passed"
+}
