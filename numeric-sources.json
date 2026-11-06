@@ -1,0 +1,41 @@
+{
+  "reference": "https://xhslink.cn/o/AmVgxjI5HBP",
+  "purpose": "Distinguish video evidence from reconstruction choices; these are not recovered original server formulas.",
+  "directly_observed": [
+    "Walnut base3 threshold160; pepper base4 threshold1280",
+    "Banana base5/10/15 thresholds3840/7680/11520",
+    "Steak base80/100 thresholds307200/368640",
+    "White toilet cost100 speed1.10 power1.10 coins1.10 upgrade50",
+    "Rocket cost200 speed1.12 power1.30 coins1.11 upgrade100",
+    "Noob cost1250 speed1.16 power2 coins1.13",
+    "Pink/crab/balloon/octopus/bat toilet displayed prices",
+    "Pet equip cap3, inventory cap50, fusion count3",
+    "Six-second visible race countdown; displayed NPC distance benchmarks",
+    "Rebirth first prices25/38/57, current energy cleared, gear retained"
+  ],
+  "supported_inference": [
+    "Distance tier base reward times equipped toilet coin multiplier, rounded",
+    "Food unlock uses an energy threshold rather than spending coins",
+    "Race largely presents growth results; snapshot energy is not spent during flight"
+  ],
+  "calibrated_for_this_build": [
+    "Unseen food thresholds, unverified toilet multipliers and upgrade curves",
+    "Pet multiplier aggregation, fusion multiplier and egg drop distribution55/33/12",
+    "0.52-second auto eating interval; 3-second preparation and 4.8-second personal flight",
+    "Gift times and reward amounts, daily and task reward configuration",
+    "Rebirth additive permanent10% per count and permanent retention of unlocked food",
+    "Logical-distance compression into a finite athletics runway",
+    "Free wardrobe and automatic features for this local playable build",
+    "Three timed personal boosts: normal+4%, perfect+8%, maximum+24%, 550ms cooldown",
+    "Shared social lobby with independent noncompetitive personal challenges",
+    "Reference-informed flight acting and upper rear camera; 3.98-second visual ground contact followed by standing recovery before the 4.8-second result"
+  ],
+  "excluded": [
+    "Body growth/deformation",
+    "Sand and ice worlds",
+    "Real-money purchase flows",
+    "Human or NPC opponents on the flight track; competitive finishing ranks"
+  ],
+  "currentVisualTheme": "Original community sports ground, r18: explicit pelvis-pivot launch, trailing knees, butt exhaust and weighted landing",
+  "compatibility": "Historic item IDs and numeric references remain, presentation names and models are original."
+}
